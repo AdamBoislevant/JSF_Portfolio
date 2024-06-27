@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Project</title>
+    <h:outputStylesheet library="css" name="style.css" />
+    <h:outputStylesheet library="css" name="project.css" />
+</h:head>
+<h:body>
+    <ui:include src="header.xhtml"/>
+
+    <section class="part" id="editProjectSection">
+        <h2>Edit Project</h2>
+        <h:form>
+            <!-- Input fields bound to managed bean properties -->
+            <h:outputLabel for="title">Title:</h:outputLabel><br/>
+            <h:inputText id="title" value="#{projectBean.editedProject.title}" required="true" /><br/><br/>
+            <h:outputLabel for="companyName">Name of the company:</h:outputLabel><br/>
+            <h:inputText id="companyName" value="#{projectBean.editedProject.companyName}" required="true" /><br/><br/>
+            <h:outputLabel for="keywords">Keywords</h:outputLabel><br/>
+            <h:inputText id="keywords" value="#{projectBean.editedProject.keywords}" required="true" /><br/><br/>
+            <h:outputLabel for="summary">Summary</h:outputLabel><br/>
+            <h:inputTextarea id="summary" value="#{projectBean.editedProject.summary}" required="true" /><br/><br/>
+            <h:outputLabel for="description">Description</h:outputLabel><br/>
+            <h:inputTextarea id="description" value="#{projectBean.editedProject.description}" required="true" /><br/><br/>
+
+            <!-- Image URLs -->
+            <h:outputLabel for="companyPic">Picture's URL for the company</h:outputLabel><br/>
+            <h:inputText id="companyPic" value="#{projectBean.selectedProject.companyPic}" /><br/><br/>
+            <h:outputLabel for="descriptionPic">Description picture's URL</h:outputLabel><br/>
+            <h:inputText id="descriptionPic" value="#{projectBean.selectedProject.descriptionPic}" />
+            <br/><br/>
+            <!-- Save Changes Button (redirects back to project page if saved)-->
+            <h:commandButton value="Save Changes" action="#{projectBean.saveChanges()}" />
+
+            <!-- Cancel Button (reload the page) -->
+            <h:commandButton value="Cancel" action="#{projectBean.cancelChanges()}" immediate="true" />
+        </h:form>
+    </section>
+
+    <ui:include src="footer.xhtml"/>
+</h:body>
+</html>
